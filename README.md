@@ -8,8 +8,10 @@
 - 1メッセージ1問、原則選択肢形式
 - 回答済み事項を飛ばし、不足や矛盾に応じて追加質問
 - 5問ごとの継続確認と、中断・再開
-- 要件定義草案、未解決事項、開発に必要な共有物一覧の作成
+- エンジニアへそのまま渡せる要件定義書、未解決事項、開発に必要な共有物一覧の作成
 - 個人情報、AIによる外部送信、制度・請求判断の確認漏れを防止
+
+最終文書には、機能要件、画面・操作、データ項目、既存システムとの情報受け渡し、例外処理、情報管理、AI利用、品質、移行、運用、受入テスト、リスク、根拠、承認、要件の対応関係を含みます。不足がある場合は完成扱いにせず、追加質問を続けます。
 
 ## Hermesで使う
 
@@ -48,7 +50,7 @@ $fukushi-requirements-interviewer
 
 ## GitHubを使わずに渡す
 
-配布用の `fukushi-requirements-interviewer-skill-v1.0.0.zip` を、メール、Google Drive、Dropbox、AirDrop、USBメモリなどで共有できます。受け取った人はZIPを展開し、そのフォルダで次のいずれかを実行します。
+配布用の `fukushi-requirements-interviewer-skill-v1.1.0.zip` を、メール、Google Drive、Dropbox、AirDrop、USBメモリなどで共有できます。受け取った人はZIPを展開し、そのフォルダで次のいずれかを実行します。
 
 macOS / Linux：
 
@@ -74,6 +76,7 @@ Windows PowerShell：
 - `一旦停止` / `今日はここまで`：現在位置を短く整理して停止
 - `ヒアリング再開`：回答済みを飛ばして再開
 - `ヒアリング終了`：現在の回答で要件定義草案を作成
+- `要件定義書を完成させて`：完成条件を監査し、不足があれば次の1問、そろっていればエンジニア引き渡し版を作成
 
 ## 安全な資料共有
 
@@ -84,6 +87,7 @@ Windows PowerShell：
 ```bash
 python3 skills/fukushi-requirements-interviewer/scripts/audit_skill.py
 python3 skills/fukushi-requirements-interviewer/scripts/simulate_interview.py
+python3 skills/fukushi-requirements-interviewer/scripts/validate_requirements.py 要件定義書.md
 ```
 
 ## License

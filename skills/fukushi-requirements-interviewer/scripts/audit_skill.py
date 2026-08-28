@@ -46,6 +46,8 @@ def main() -> int:
         "references/question-bank.md",
         "references/requirements-output.md",
         "references/development-materials.md",
+        "references/engineer-ready-gate.md",
+        "scripts/validate_requirements.py",
     ]
     for relative in required:
         if not (SKILL_DIR / relative).is_file():
@@ -61,6 +63,7 @@ def main() -> int:
     engine = read("references/interview-engine.md")
     output = read("references/requirements-output.md")
     materials = read("references/development-materials.md")
+    gate = read("references/engineer-ready-gate.md")
     openai = read("agents/openai.yaml")
     readme = (REPO_DIR / "README.md").read_text(encoding="utf-8")
 
@@ -74,6 +77,42 @@ def main() -> int:
     for phrase in ["確認済み", "仮説", "資料待ち", "判断待ち", "READY"]:
         if phrase not in skill + engine + output:
             findings.append(Finding("state-contract", phrase))
+
+    for phrase in ["ENGINEERING_READY", "CONDITIONALLY_READY", "DRAFT_NOT_READY", "G1", "G11"]:
+        if phrase not in skill + gate + output:
+            findings.append(Finding("handoff-gate", phrase))
+
+    output_sections = [
+        "引き渡し判定",
+        "スコープ",
+        "現在の業務",
+        "改善後の業務",
+        "機能要件",
+        "画面・帳票・通知",
+        "データ要件",
+        "既存システム・外部との情報受け渡し",
+        "AI利用要件",
+        "情報管理・プライバシー",
+        "品質要件",
+        "過去情報の移行",
+        "運用・サポート",
+        "受入条件・テスト",
+        "導入・切替・撤退",
+        "未解決事項・決定事項",
+        "トレーサビリティ",
+        "開発見積もり・技術設計への引き渡し情報",
+        "承認",
+    ]
+    for phrase in output_sections:
+        if phrase not in output:
+            findings.append(Finding("engineer-output", phrase))
+
+    for identifier in ["FR-xxx", "AC-xxx", "DATA-xxx", "INT-xxx", "OI-xxx"]:
+        if identifier not in output:
+            findings.append(Finding("traceability-id", identifier))
+
+    if "scripts/validate_requirements.py" not in skill:
+        findings.append(Finding("delivery-validation", "validator is not routed from SKILL.md"))
 
     for phrase in ["匿名化", "パスワード", "1回1件", "優先度A"]:
         if phrase not in skill + materials:
