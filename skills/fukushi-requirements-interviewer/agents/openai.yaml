@@ -1,0 +1,6 @@
+interface:
+  display_name: "福祉業務 要件ヒアリング"
+  short_description: "専門知識なしで進める、1問ずつの開発要件ヒアリング"
+  default_prompt: "Use $fukushi-requirements-interviewer when I say ヒアリングスタート, and ask exactly one plain-language question at a time."
+policy:
+  allow_implicit_invocation: true
