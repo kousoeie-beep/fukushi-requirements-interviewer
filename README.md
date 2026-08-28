@@ -50,7 +50,7 @@ $fukushi-requirements-interviewer
 
 ## GitHubを使わずに渡す
 
-配布用の `fukushi-requirements-interviewer-skill-v1.1.0.zip` を、メール、Google Drive、Dropbox、AirDrop、USBメモリなどで共有できます。受け取った人はZIPを展開し、そのフォルダで次のいずれかを実行します。
+配布用の `fukushi-requirements-interviewer-skill-v1.1.1.zip` を、メール、Google Drive、Dropbox、AirDrop、USBメモリなどで共有できます。受け取った人はZIPを展開し、そのフォルダで次のいずれかを実行します。
 
 macOS / Linux：
 

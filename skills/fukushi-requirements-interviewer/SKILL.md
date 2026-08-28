@@ -53,7 +53,7 @@ metadata:
 
 まず `references/engineer-ready-gate.md` を監査する。必須ゲートに不足があり、回答者が対話を終了していない場合は、文書生成へ逃げず最重要の不足を1問だけ聞く。全ゲートを満たした場合だけ `ENGINEERING_READY` の要件定義書を生成する。
 
-ファイルを扱える環境では、生成後に次を実行する。
+ファイルを扱える環境では、生成後に同梱の[要件定義書バリデーター](scripts/validate_requirements.py)を実行する。
 
 ```bash
 python3 <このSkillのディレクトリ>/scripts/validate_requirements.py <出力した要件定義書.md>
